@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Eastern Tapestry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              neo: {
+                black: '#000000',
+                white: '#FFFFFF',
+                azure: '#00C2FF', // Vibrant Azure
+                yellow: '#FFDE00', // Pop Yellow
+                orange: '#FF6719', // Substack Orange
+                bg: '#F0F9FF', // Very light blue
+                purple: '#A855F7',
+                green: '#22C55E',
+                pink: '#FF90E8'
+              }
+            },
+            boxShadow: {
+              'neo': '4px 4px 0px 0px #000000',
+              'neo-md': '6px 6px 0px 0px #000000',
+              'neo-lg': '8px 8px 0px 0px #000000',
+              'neo-xl': '12px 12px 0px 0px #000000',
+              'neo-hover': '2px 2px 0px 0px #000000', // Pressed state
+            },
+            fontFamily: {
+              serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+              sans: ['"Space Grotesk"', '-apple-system', 'sans-serif'],
+              display: ['"Space Grotesk"', 'sans-serif'],
+            },
+            borderWidth: {
+              '3': '3px',
+              '4': '4px',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #F0F9FF;
+        background-image: radial-gradient(#00C2FF 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+      /* Custom scrollbar for a cleaner look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #FFFFFF;
+        border-left: 2px solid #000000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00C2FF;
+        border: 2px solid #000000;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #FF6719;
+      }
+
+      /* Prose Images & Figures Handling */
+      .prose {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* Default image styling if no wrapper */
+      .prose > p > img, .prose > img {
+        margin: 1.5rem auto;
+        border: 3px solid black;
+        box-shadow: 4px 4px 0px 0px #000000;
+        border-radius: 0;
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Captioned Image Container Structure */
+      .captioned-image-container {
+        margin: 2rem 0;
+        width: 100%;
+        clear: both;
+      }
+
+      .captioned-image-container figure {
+        margin: 0;
+        width: 100%;
+        display: block;
+      }
+
+      /* The link wrapping the image */
+      .image-link {
+        display: block;
+        position: relative;
+        border: 3px solid black;
+        box-shadow: 6px 6px 0px 0px #000000;
+        transition: transform 0.1s ease;
+        background: #000;
+      }
+
+      .image-link:active {
+        transform: translate(2px, 2px);
+        box-shadow: 4px 4px 0px 0px #000000;
+      }
+
+      .image-link img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* Figure Caption */
+      figure figcaption {
+        margin-top: 1rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        font-weight: 700;
+        color: #000000;
+        border-left: 4px solid #FF6719;
+        padding-left: 1rem;
+        background: rgba(255, 103, 25, 0.1);
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        width: 100%;
+      }
+
+      /* HIDE Embedded Subscribe Button (Substack) */
+      .prose .button-wrapper,
+      .prose .subscription-widget-wrap {
+        display: none !important;
+      }
+
+      /* Classes often found in rich text imports */
+      .image2-inset {
+        width: 100%;
+      }
+
+      /* Tablet+ enhancements */
+      @media (min-width: 768px) {
+        .image2-inset {
+          max-width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        ::-webkit-scrollbar {
+          width: 14px;
+        }
+        ::-webkit-scrollbar-track {
+          border-left: 3px solid #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+          border: 3px solid #000000;
+        }
+      }
+
+      /* Responsive Iframes */
+      .prose iframe {
+        width: 100%;
+        max-width: 100%;
+        border: 3px solid black;
+        box-shadow: 4px 4px 0px 0px #000000;
+        margin: 2rem 0;
+      }
+
+      .prose blockquote {
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-neo-bg text-neo-black font-sans antialiased overflow-x-hidden">
+    <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+</html>
