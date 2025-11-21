@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:prod": "vite build --mode production",
     "preview": "vite preview",
-    "deploy": "pnpm run build && gh-pages -d dist"
+    "deploy": "pnpm run build:prod && gh-pages -d dist"
   },
   "dependencies": {
     "@google/genai": "^1.30.0",
